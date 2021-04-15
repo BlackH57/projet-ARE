@@ -69,3 +69,20 @@ def variance(L) :
   
 def ecart-type(L) :
   return sqrt(variance(L))
+
+
+def liste_reduite(l):
+    q1 , q2 = quartiles(l)
+    ec_int = q2-q1    
+    inf = q1 - 1.5 * ec_int
+    sup = q2 + 1.5 * ec_int
+    L_res=[]
+    
+    for i in range(len(l)):       
+        if l[i] <= sup and l[i] >= inf:
+            L_res.append(l[i])
+
+    return L_res
+
+def moyenne_reduite(l):
+    return moyenne(liste_reduite(l))
